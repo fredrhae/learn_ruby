@@ -19,14 +19,13 @@ def first_word phrase
 end
 
 def titleize words
-	processed_words = []
+	little_words = ["and","the", "of", "over"]
+	processed_words = words.split(' ')
 	first = true
-	words.split(' ').each do |word|
-		if( first || (not ["and","the", "of", "over"].include? word))
-			processed_words << word.capitalize
+	processed_words.each do |word|
+		if( first || (not little_words.include? word))
+			word.capitalize!
 			first = false
-		else
-			processed_words << word
 		end
 	end
 	processed_words.map { |s| "#{s}" }.join(' ')
